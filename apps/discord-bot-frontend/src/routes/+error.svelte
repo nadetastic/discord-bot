@@ -3,7 +3,7 @@
   import { Content, Grid, Row, Column } from 'carbon-components-svelte'
 
   if (import.meta.env.DEV) {
-    console.error('Error', $page.error)
+    console.error('Error ---', $page.error)
   }
 </script>
 
@@ -11,7 +11,7 @@
   <Grid>
     <Row>
       <Column>
-        <h1>{$page.status}: {$page.error.message}</h1>
+        <h1>{$page.status}: {$page.error.message} +++</h1>
         <p>Something went wrong.</p>
       </Column>
     </Row>

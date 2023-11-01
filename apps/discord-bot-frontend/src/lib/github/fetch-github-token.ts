@@ -20,7 +20,8 @@ export async function fetchGitHubToken() {
     })
     token = response?.token
   } catch (cause) {
-    throw new Error('Error fetching GitHub installation token', { cause })
+    // throw new Error('Error fetching GitHub installation token', { cause })
+    console.log('Error fetching GitHub installation token')
   }
   return token
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { error } from '@sveltejs/kit'
 import {
   type Configuration,
@@ -57,11 +58,9 @@ type AdminPageReturn = {
   selectedTab: number
 }
 
-export const load: PageServerLoad = async ({ locals, url }) => {
-
-  console.log('admin load()')
+export const load = async ({ locals, url }: Parameters<PageServerLoad>[0]) => {
   const commands = Array.from(bank.values())
-  const guildId = locals.guildId
+  const guildId = locals.session.guild
 
   // get guild info
   const guild = (await api.get(Routes.guild(guildId))) as Guild

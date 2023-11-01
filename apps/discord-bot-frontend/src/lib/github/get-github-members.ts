@@ -9,8 +9,9 @@ export async function getGitHubMembers() {
     return data
   } catch (cause) {
     // throw new Error(`Unable to fetch GitHub members`, { cause })
-    const error = new Error(`Unable to fetch GitHub members`, { cause })
-    console.error(error.message, error)
+    // const error = new Error(`Unable to fetch GitHub members`, { cause })
+    // console.error(error.message, error)
+    console.log('Unable to fetch GitHub members')
   }
   return []
 }

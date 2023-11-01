@@ -1,0 +1,27 @@
+// @ts-nocheck
+import { prisma } from '$lib/db'
+import { FEATURE_TYPES } from '$lib/constants'
+import { type PageServerLoad } from './$types'
+import { createIntegrationHrefFromCode } from '../breadcrumbs'
+
+export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
+  const integrations = await prisma.configurationFeature.findMany({
+    where: {
+      configurationId: locals.session.guild,
+      feature: {
+        type: {
+          code: FEATURE_TYPES.INTEGRATION,
+        },
+      },
+    },
+    select: {
+      feature: true,
+    },
+  })
+  return {
+    integrations: integrations.map((integration) => ({
+      ...integration.feature,
+      href: createIntegrationHrefFromCode(integration.feature.code),
+    })),
+  }
+}

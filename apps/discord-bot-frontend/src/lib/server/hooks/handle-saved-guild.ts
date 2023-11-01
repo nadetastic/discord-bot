@@ -22,20 +22,31 @@ function useSavedGuild(
 export const handleSavedGuild: Handle = async ({ event, resolve }) => {
   const savedGuild = useSavedGuild(event)
 
+  console.log('IN HANLDE S GUILD')
+
   /** Guilds that are shared between the current user and bot */
   const sharedGuilds = []
 
+  console.log('============',savedGuild)
+  console.log('============',event.locals.session?.user)
+
+
+
   // only attempt to fetch guild memberships if the user is logged in
   if (savedGuild && event.locals.session?.user) {
+    console.log('============',savedGuild)
     const botGuilds = await getBotGuilds()
+    console.log('hmmm')
     for (const guild of botGuilds) {
       try {
         await api.get(
           Routes.guildMember(guild.id, event.locals.session.user.discordUserId)
         )
+        console.log('++++')
         sharedGuilds.push(guild)
       } catch (error) {
         // user is not a member of this guild, this messaging can be safely ignored but is available for debugging
+        console.log('=>>>',error)
         console.warn(
           `[ignore] Error fetching guild member ${event.locals.session.user.discordUserId} for ${guild.id}: ${error}`
         )
@@ -65,5 +76,8 @@ export const handleSavedGuild: Handle = async ({ event, resolve }) => {
     })
   )
 
+  // console.log(response)
+
+  console.log('returning response')
   return response
 }

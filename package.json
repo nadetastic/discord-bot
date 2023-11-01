@@ -12,9 +12,10 @@
     "build-lib": "pnpm --filter \"./packages/*\" run build",
     "check": "prettier --check .",
     "lint": "eslint .",
-    "setup-dev": "pnpm install && pnpm run build-lib",
+    "setup-dev": "pnpm install && pnpm run build-lib && npx prisma db push --schema=./apps/discord-bot-frontend/prisma/schema.prisma",
     "setup-test": "pnpm run -r --if-present setup-test",
-    "test": "pnpm -r run test"
+    "test": "pnpm -r run test",
+    "prisma-studio":"npx prisma studio --schema=./apps/discord-bot-frontend/prisma/schema.prisma"
   },
   "devDependencies": {
     "@hey-amplify/scripts": "workspace:*",
