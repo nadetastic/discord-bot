@@ -10,6 +10,8 @@ function createFakeUsers(): Prisma.DiscordUserCreateInput[] {
   }))
 }
 
+/* test */
+
 async function getRandomFakeUser(): Promise<DiscordUser> {
   const [user] = (await prisma.$queryRawUnsafe(
     `SELECT * FROM "DiscordUser" ORDER BY RANDOM() LIMIT 1;`
