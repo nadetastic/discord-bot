@@ -6,6 +6,8 @@ ENV CI=true
 # for turbo - https://turbo.build/repo/docs/handbook/deploying-with-docker#example
 RUN apk add --no-cache libc6-compat curl
 RUN apk update
+# for prisma + openssl
+RUN apk add openssl1.1-compat
 WORKDIR /workspace
 # enable corepack for pnpm
 RUN corepack enable
