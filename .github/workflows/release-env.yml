@@ -27,6 +27,7 @@ jobs:
       id-token: write # for AWS Action to interact with GitHub's OIDC endpoint
       contents: write # for gh CLI to create a release, otherwise "read" for AWS Action
     steps:
+      - uses: jirutka/setup-alpine@v1
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
