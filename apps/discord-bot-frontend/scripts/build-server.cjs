@@ -1,3 +1,6 @@
+console.log(process.env); 
+
+
 if (!process.env.CI) {
   // local builds require env vars
   const path = require('node:path')
