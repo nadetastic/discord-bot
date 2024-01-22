@@ -56,6 +56,7 @@ jobs:
           VITE_DISCORD_GUILD_ID: ${{ secrets.VITE_DISCORD_GUILD_ID }}
           VITE_NEXTAUTH_URL: ${{ secrets.VITE_NEXTAUTH_URL }}
           VITE_HOST: ${{ secrets.VITE_HOST }}
+          FOO: "BAR"
       - name: release
         run: |
           # exit early when performing a sequential release (next -> main)
