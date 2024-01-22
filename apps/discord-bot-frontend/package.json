@@ -6,7 +6,7 @@
     "start": "sh ./scripts/start.sh",
     "start-server": "node ./build/index.js",
     "dev": "vite",
-    "build": "pnpm run build-app && pnpm run build-server",
+    "build": "pnpm run build-app",
     "build-app": "vite build",
  
     "test": "playwright test",
