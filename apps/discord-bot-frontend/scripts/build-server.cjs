@@ -1,4 +1,4 @@
-console.log(process.env); 
+console.log('before',process.env); 
 
 
 if (!process.env.CI) {
@@ -12,6 +12,7 @@ if (!process.env.CI) {
   ])
   Object.assign(process.env, env)
 }
+console.log('after',process.env); 
 
 require('esbuild').build({
   entryPoints: ['src/server.ts'],
