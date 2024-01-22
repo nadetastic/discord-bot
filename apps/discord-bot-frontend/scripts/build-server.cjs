@@ -1,7 +1,7 @@
 console.log('before',process.env); 
 
 
-// if (!process.env.CI) {
+if (!process.env.CI) {
   // local builds require env vars
   const path = require('node:path')
   const { loadEnv } = require('vite')
@@ -11,7 +11,7 @@ console.log('before',process.env);
     'NEXTAUTH_',
   ])
   Object.assign(process.env, env)
-// }
+}
 console.log('after',process.env); 
 
 require('esbuild').build({
