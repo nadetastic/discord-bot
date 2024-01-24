@@ -24,8 +24,8 @@ require('esbuild').build({
   define: {
     'import.meta.env.DEV': 'false',
     'import.meta.env.PROD': 'true',
-    'import.meta.env.VITE_HOST': 'http://localhost:5173',
-    'import.meta.env.VITE_DISCORD_GUILD_ID': '1093684351159521350',
+    'import.meta.env.VITE_HOST': JSON.stringify('http://localhost:5173'),
+    'import.meta.env.VITE_DISCORD_GUILD_ID': JSON.stringify('1093684351159521350'),
   },
   banner: {
     js: "import { handler } from './handler.js';import { createRequire } from 'node:module';const require = createRequire(import.meta.url)",
